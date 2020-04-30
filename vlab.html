@@ -1,0 +1,575 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="content-type" content="text/html; charset=utf-8">
+      <title>Title</title>
+   
+      
+      <script>
+var actdiv=0;
+   var bhxfl="F";
+   var thxfl="F";
+
+
+   function divb(mid)
+   {
+         document.getElementById("div1").style.border="1px solid grey";
+      document.getElementById("div2").style.border="1px solid grey";
+      document.getElementById("div3").style.border="1px solid grey";     
+      document.getElementById("div4").style.border="1px solid grey";
+      document.getElementById("div5").style.border="1px solid grey";  
+     
+       document.getElementById("div7").style.border="1px solid grey";
+           document.getElementById("div8").style.border="1px solid grey";
+      document.getElementById(mid).style.border="2px #FF0000 solid";
+      actdiv=mid;
+   }
+/*
+
+    $(document).ready(function(){ 
+$("#div3").click(ZoomIn());
+
+$("#div3").click(ZoomOut());
+
+function ZoomIn (event) {
+
+    $("#div3").width(
+        $("#div3").width() * 1.2
+    );
+
+    $("#div3").height(
+        $("#div3").height() * 1.2
+    );
+},
+
+function  ZoomOut (event) {
+
+    $("#div3 ").width(
+        $("#div3").width() * 0.5
+    );
+
+    $("#div3").height(
+        $("#div3").height() * 0.5
+    );
+}
+   thisRespondHightlightText(".select--highlight--active");
+
+
+function thisRespondHightlightText(thisDiv){
+    $(thisDiv).on("mouseup", function () {
+        var selectedText = getSelectionText();
+        var selectedTextRegExp = new RegExp(selectedText,"g");
+        var text = $(this).text().replace(selectedTextRegExp, "<span class='red'>" + selectedText + "</span>");
+        $(this).html(text);
+    });
+}
+
+
+function getSelectionText() {
+    var text = "";
+    if (window.getSelection) {
+        text = window.getSelection().toString();
+    } else if (document.selection && document.selection.type != "Control") {
+        text = document.selection.createRange().text;
+    }
+    return text;
+}
+});*/
+</script>
+<style>
+
+.red {
+    color:red;
+}
+    
+#full {
+ background-color: #ffffff;
+}
+/* This is the css style that will make your text blink.*/
+.blinkytext {
+     font-family: Arial, Helvetica, sans-serif;
+     font-size: 14pt;
+     font-style: normal;
+     color: red;
+     text-align: center;
+}
+.D3:active {
+   background-color: white;
+  transform: scale(1.5); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+}
+.D4:active {
+   background-color: white;
+  transform: scale(1.5); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+}
+.theme{
+background-color: white;
+  height: 50px;
+  width: 130px;
+  position: sticky;
+  }
+
+
+*{
+   margin: 0;
+   padding: 0;
+}
+
+body{
+   font-family: Helvetica;
+   font-size: 12px;
+   color:#2d3536;
+   position: relative;
+}
+
+img{
+   border: none;
+}
+
+a{
+   color: blue;
+   font-size: 12px;
+   text-decoration: none;
+}
+
+a:hover{
+   color: red;
+   font-size: 12px;
+   text-decoration: underline;
+}
+
+
+.D5 a{
+   color: blue;
+   font-size: 10px;
+   text-decoration: underline;
+}
+
+.container{
+   width: 1074px;
+   height: 700px;
+   margin-left: auto;
+   margin-right: auto;
+   
+}
+
+.container .workspace{
+   width: 804px;
+   height: 700px;
+   float: left;
+   border: 14px solid black;
+}
+
+.container .toolbox{
+   width: 228px;
+   height: 728px;
+   float: left;
+   background: url(main-bg.gif);   
+}
+
+.himg{
+   width: 80px;
+   height: 80px;
+   float: left;
+}
+
+.himgs{
+   width: 300px;
+   height: 80px;
+   float: right;
+}
+
+.D1{
+   width: 790px;
+   height: 80px;
+   border:1px solid gray;
+   margin-left: auto;
+   margin-right: auto;
+   padding: 5px;
+   margin-top: 10px;
+}
+
+.D2{
+   width: 790px;
+   height: 15px;
+   text-align: center;
+   border: 1px solid gray;
+   margin-left: auto;
+   margin-right: auto;
+   margin-top: 10px;
+   padding: 5px;
+   font-size: 14px;
+}
+
+.content{
+   width: 800px;
+   height: 310px;
+   text-align: center;
+   margin-left: auto;
+   margin-right: auto;
+   margin-top: 10px;
+}
+
+.D3{
+   width: 490px;
+   height: 300px;
+   border:1px solid gray;
+   float: left;
+   text-align: justify;
+   padding: 5px;
+   transition: transform .6s;
+}
+
+.images{
+   width: 280px;
+   height: 160px;
+   margin-left: 15px;
+ 
+   float: left;
+   text-align: center;
+}
+
+.DI{
+   width: 260px;
+   height: 130px;
+   float: center;
+   text-align: justify;
+margin-top:5px;
+margin-bottom:10px;
+ margin-right:10px;
+
+}
+
+.D4{
+   width: 790px;
+   height: auto;
+   border:1px solid gray;
+   text-align: justify;
+   padding: 5px;
+   margin-left: auto;
+   margin-right: auto;
+   margin-top: 10px;
+ transition: transform .6s;
+}
+
+.D5{
+   width: 790px;
+   height: 40px;
+   border: 1px solid gray;
+   margin-left: auto;
+   margin-right: auto;
+   margin-top: 20px;
+   padding: 5px;
+   text-align: center;
+}
+
+
+.btn{
+   width: 200px;
+   height: 680px;
+   margin-left: 14px;
+   margin-right: 14px;
+   margin-bottom: 14px;
+   float: left;
+   font-size: 18px;
+   z-index: 1;
+   background: url("images/main-bg.gif");
+}
+
+.btn .txt{
+   width: 180px;
+   height: 400px;
+   padding: 5px;
+   border: 2px #663300 solid;
+   margin-top: 10px;
+   margin-left: auto;
+   margin-right: auto;
+   background-color: white;
+}
+
+.btn .items{
+   width: 180px;
+   height: 50px;
+   margin-left: auto;
+   margin-right: auto;
+   float: left;
+   background-color: white;
+}
+
+.input{
+   width: 70px;
+   height: 28px;
+   font-size: 24px;
+   text-align: left;
+   border: 2px solid grey;
+   
+   
+}
+
+.btn .bcolor{
+   width: 180px;
+   height: 400px;
+   padding: 5px;
+   border: 2px #663300 solid;
+   margin-top: 10px;
+   margin-left: auto;
+   margin-right: auto;
+   background-color: white;
+}
+
+.btn .setcolor{
+   width: 100px;
+   height: 100px;
+   display:block;
+   margin-left: auto;
+   margin-right: auto;
+   background-color: grey;
+   font-size:8pt;
+   border-width: 6px;
+}
+   
+.btn .back{
+   width: auto;
+   height: auto;
+   margin-left: auto;
+   margin-right: auto;
+}
+
+.hlp{
+   width: auto;
+   height: auto;
+   margin-right: -20px;
+   margin-top: 10px;
+   z-index: 10;
+}
+
+
+/*Light Box*/
+.black_overlay{
+   display: none;
+   position: absolute;
+   top: 0%;
+   left: 0%;
+   width: 100%;
+   height: 1000px;
+   background-color: black;
+   z-index:1001;
+   -moz-opacity: 0.5;
+   opacity:.50;
+   filter: alpha(opacity=50);
+}
+
+.white_content {
+   display: none;
+   position: absolute;
+   top: 20%;
+   left: 20%;
+   right: 20%;
+   width: 60%;
+   height: 60%;
+   padding: 20px;
+   border: 2px solid black;
+   background-color: white;
+   z-index:1002;
+   overflow: hidden;
+}
+
+.containerlb{
+   width: 90%;
+   height: 90%;
+   margin: 20px;   
+}
+
+.row{
+   width: 100%;
+   height: auto;
+   text-align: justify;
+   font-size: 16px;
+   line-height: 30px;
+   margin: 4px 9px 4px 9px;
+}
+
+h3{
+   padding-left:175px;
+   color:#000000;
+}
+
+h2{
+   color:red;
+}
+
+h6.round{
+   border:1px solid black;
+   background-color:lightgrey;
+   
+
+}
+#div7{
+   padding:5px;
+   border:5px;
+}
+
+#div8{
+   padding:5px;
+   border:5px;
+}
+</style>
+   </head>
+<body>
+
+   <div class="container">
+      <div class="workspace">
+         <h1 class="blinkytext">
+            
+            <h2 align="center"><strong>KJ SOMAIYA COLLEGE OF ENGINEERING,VIDYAVIHAR</strong></h2> 
+         </h1>
+        
+         <div id=div1 class="D1" onclick="divb(this.id);" >
+            <div  class="himg" onclick="divb(this.id);">
+               <img src="somaiya.png" height="80px" width="80px"/>
+            </div>
+            
+            <div class="himgs" onclick="divb(this.id);">
+               <img src="clg.png" height="80px" width="300px" align="right" />
+            </div>
+         </div>
+         
+         
+         <div id=div2 class="D2" onclick="divb(this.id);" >  
+           <u>  Home  </u>  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+           <u>  Academic </u> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+           <u>  Admisitration </u> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+           <u>  Departments </u> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+           <u>  Centeres </u> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+           <u>  Faculty </u> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+           <u>  Essential Information </u>
+         </div>
+         
+         
+         <div class="content">
+            <div id=div3 class="D3" onclick="divb(this.id);" > 
+           
+               <h2 id="abt" style="text-align: center;">About Our Institution</h2> <br /> 
+                <div class="select--highlight--active">
+               <p> The K. J. Somaiya College of Engineering (KJSCE) was established in 1983 at Somaiya Vidyavihar, and affiliated with the University of Mumbai. It offers 4 year bachelor's degree courses in the departments of Electronics Engineering, Electronics and Telecommunications Engineering, Computer Engineering, Information Technology and Mechanical Engineering. KJSCE is an Autonomous college affiliated to the University of Mumbai spread across approx. 65 acres of posh land and stands among the top 3 engineering colleges in Mumbai. It is also one of the only 5 autonomous engineering colleges in Mumbai the others being VJTI, SP, DJ and Thakur.
+               </p>
+               </div>
+            </div>
+            
+            
+            
+            <div class="images">
+               <div class="DI" id="div8" onclick="divb(this.id);">  
+                  <img src="kj.png" height="130px" width="260px" />
+               </div>
+               <div class="DI" id="div7" onclick="divb(this.id);">  
+                  <img src="kj1.png" height="130px" width="260px" />
+               </div>
+            </div>
+         </div>
+            
+            
+            
+         <div id=div4 class="D4" onclick="divb(this.id);" > 
+            <h2 id="inf" style="text-align: center;">Infrastructure</h2>  
+            <p>
+             
+
+               The College is housed In Two Buildings. The main building, known as Aryabhat, has Ground Four floors while the new building, known as Bhaskaracharya has Ground +Six floors. The college has an ultra-modern Air Conditioned Auditorium with 950 seating capacity which provides an advantage forthe conduction of important academic presentations and studentfunctons. Additionally, every engineering department has two seminar halls one each for B.Tech & M.Tech studems. All Seminar Hats and all class rooms are equipped with modem projection facillbes. Central and Departmental Libraries, wet equipped state-of-art Laboratories along with ample Computing facilities are the pride of this College. Amongst student amenities, an Indoor Badminton Hall, Girls common moms and a wall maintained spacious canteen facility caters to needs of all students on college Campus.
+
+Both the building are friendly to differently abled students. 
+            </p>
+         </div>
+         
+         
+         
+         <div id=div5 class="D5" onclick="divb(this.id);" > 
+            <u>Placement </u> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+            <u>QIP </u> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+            <u>Student's Activities </u> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+            <u>Web Courses </u> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+            <u>Citizen Centric  Administration </u> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+            <u>Disclaimer </u> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+            <u>IITB System Portal </u><br /><br />
+            © 2020 somaiya vidyavihar.For queries visit https://kjsce.somaiya.edu/kjsce/ </p>
+         </div>
+      </div>
+   
+   
+      <div class="toolbox">
+      
+         <h1 class="blinkytext" style="margin-top: 14px;">
+            Color Settings
+         </h1>
+       
+
+         <div class="btn">
+            <!--Lightbox help options-->
+         <div class="hlp">
+            <a style="float: right;" href = "javascript:void(0)" onclick = "document.getElementById('light').style.display='block';document.getElementById('fade').style.display='block'">
+              
+            </a>
+         </div>
+               
+         <div id="light" class="white_content">
+            <a style="float: right;" href="javascript:void(0)" onclick="document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'"><img src="images/close.gif" alt="Close" /></a>
+	    <div class="containerlb">
+               <div class="row">
+		  <h3>Color-setting  window  (Text  color  setting)</h3>
+	       </div>
+		         <p>NOTE:The default color chosen in the pallete for background and text is BLACK</p>
+               <div class="row">
+                  1. You can give the RGB color values required through the input boxes provided. The  converted hex color code  will  automatically  be displayed.
+               </div>
+               
+               <div class="row">
+                  2. To apply this color to text press  the  "Set Text Color"  button.
+               </div>
+               
+               <div class="row">
+                  3. Visa-versa  if  you  know  the  hex color code  of a color, you  can  directly  enter  it  in the input box  provided.  The corresponding RGB color values  will be computed  and dislayed after  you  press  "Set Text Color"  button.
+               </div>
+               
+               <div class="row">
+                  4. Using color picker -  In case  of  hex color code setting,  a  color  picker  can  be  used which  will  give  you an immediate visual  feedback  of  the  color  selected. Press "Close"  button on the color picker to  select  the  color  identified.
+               </div>
+               
+               <div class="row">
+                  5. Remember  that  the  "Set Text Color" button  will  apply  the  text  color settings  only  to  the selected section  of  the  web-page.
+	       </div>
+	    </div>
+	 </div>
+
+	 <div id="fade" class="black_overlay">
+
+	 </div>
+            
+            
+            <div class="txt">
+            <form method="post" action="">
+       <h6 class="round">NOTE:The default color chosen in the pallete for background and text is BLACK</h6>
+<br>
+<h6 class="round">NOTE:For changing the text color or background color of any particular div,first select by clicking on the div.</h6>
+       <br>
+       
+       <h5>Choose the background color:</h5>
+        <label for="bg2">Background:</label> <br>
+        <input type="color"  class="theme" id="bg2" onchange="javascript:document.getElementById(actdiv).style.backgroundColor=document.getElementById('bg2').value;" />
+        <br><br>
+        <br>
+        <h5>Choose the text color</h5> 
+        <label for="tx2">Text:</label> <br>
+        <input type="color" class="theme" id="tx2" onchange="javascript:document.getElementById(actdiv).style.color=document.getElementById('tx2').value;"/>
+      
+    </form>
+               
+        
+           
+
+		
+            
+         </div>
+      </div>
+   </div>
+ 
+   </body>
+</html>
